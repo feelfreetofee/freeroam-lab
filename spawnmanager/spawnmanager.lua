@@ -244,6 +244,19 @@ RegisterCommand("respawn", function()
 		})
 end, false)
 
+RegisterCommand("revive", function()	
+		local rcoord = GetEntityCoords(PlayerPedId())
+		
+		spawnPlayer({
+			x = rcoord.x,
+			y = rcoord.y,
+			z = rcoord.z,
+			heading = GetEntityPhysicsHeading(PlayerPedId()) or 0,
+			model = GetHashKey("mp_m_freemode_01"),
+			skipFade = true
+		})
+end, false)
+
 function openSkinMenu()
 	local config = {
 		ped = false,
@@ -298,6 +311,8 @@ end)
 RegisterCommand("help", function()
 	print('fixchar - Reloads player skin')
 	print('skin - Open player customization menu')
+	print('revive - Respawn where you dead')
+	print('respawn - Respawn in a random SpawnPoint')
 end, false)
 
 ExecuteCommand('respawn')
