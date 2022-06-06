@@ -315,4 +315,6 @@ RegisterCommand("help", function()
 	print('respawn - Respawn in a random SpawnPoint')
 end, false)
 
-ExecuteCommand('respawn')
+AddEventHandler("JoinTransition:Loading", function()
+	ExecuteCommand('respawn')
+end)
